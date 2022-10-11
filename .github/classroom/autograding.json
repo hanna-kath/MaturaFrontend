@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "autogradeviatests",
+      "setup": "",
+      "run": "npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}
