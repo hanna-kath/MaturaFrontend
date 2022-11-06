@@ -1,9 +1,38 @@
 <div>
-  {{ipAddress}}
-
   <table id="patientTable">
     <!-- todo add your patients here -->
+    <th>PatientenId</th>
+    <th>Identifier</th>
+    <th>Aktiv</th>
+    <th>Geschlecht</th>
+    <th>Name</th>
+    <th>Geburtstag</th>
+    <th>Telecom</th>
+    <th>DeceasedBoolean</th>
+    <th>Adresse</th>
 
+    <tr *ngFor="let patient of patients">
+      <td><span>{{patient.id}}</span></td>
+      <td>
+        <p *ngFor='let identifier of patient.identifier'>{{identifier?.value}}</p>
+      </td>
+      <td><span>{{patient.active}}</span></td>
+      <td><span>{{patient.gender}}</span></td>
+      <td>
+        <p *ngFor="let name$ of patient?.name">{{name$.family}}</p>
+      </td>
+      <td><span>{{patient.birthDate}}</span></td>
+      <td>
+        <p *ngFor="let telecom$ of patient?.telecom">{{telecom$.value}}</p>
+      </td>
+      <td><span>{{patient.deceasedBoolean}}</span></td>
+      <td>
+        <p *ngFor="let address$ of patient.address">{{address$.line}}</p>
+      </td>
+    </tr>
   </table>
 
+
 </div>
+
+

@@ -2,22 +2,80 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 // todo implement all your server-side properties of patient
-export interface Patient{
-  name: string;
+export class Patient{
+  constructor(
+    public id: string = '',
+    public resourceType: string = 'Patient',
+    public identifier?: Array<Identifier>,
+    public name?: Array<HumanName>,
+    public telecom?: Array<ContactPoint>,
+    public active: boolean = false,
+    public gender: string = 'unknown',
+    public birthDate: Date = new Date(1000, 1, 1),
+    public deceasedBoolean?: boolean,
+    public address?: Array<Address>
+  ) {}
 }
 
+export class HumanName {
+  constructor(
+    public id: string = '',
+    public use: string = '',
+    public text: string = '',
+    public family: string = '',
+    public given: string = '',
+    public prefix: string = '',
+    public suffix: string = ''
+  ) {}
+}
+
+export class Identifier {
+  constructor(
+    public value: string = ''
+    //public use: string = '',
+    //public system: string = ''
+  ) {}
+}
+
+export class ContactPoint {
+  constructor(
+    public value: string = '',
+    public text: string = ''
+  ) {}
+}
+
+export class Address{
+  constructor(
+    public use: string = '',
+    public type: string = '',
+    public text: string = '',
+    public city: string = '',
+    public district: string = '',
+    public state: string = '',
+    public postalcode: string = '',
+    public country: string = '',
+    public line: Array<String>
+  ) {}
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit{
+
   title = 'EmptyProject';
   ipAddress: string = "";
+  //name: string = "Hi";
 
   // todo store patients here
   public patients: Patient[] = [];
+  public adresses: Address[] = [];
+  public identifiers: Identifier[] = [];
+  public names: HumanName[] = [];
+  public telecoms: ContactPoint[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -34,16 +92,52 @@ export class AppComponent implements OnInit{
     });
   }
 
+  getAllPatients(){
+    this.http.get<any>("http://localhost:8080/api/patient").subscribe((data:Patient[]) =>{
+        console.log(data);
+        this.patients = data;
+        // this.names = response;
+        // this.telecoms = response;
+        // this.adresses = response;
+        // this.identifiers = response;
+      }
+    );
+  }
+
+
+// todo add http requests
+
+//   public getPatients(): Observable<Patient[]> {
+//     console.log('getPatients called');
+//     return this.http
+//       .get<Patient[]>("http://localhost:8080/api/patient")
+//       .pipe(catchError(this.handleError('getPatients',[])));
+//   }
+//
+//   private handleError<T>(operation = 'operation', result?: T) {
+//     return (error: any): Observable<T> => {
+//       console.error(error);
+//       console.log(`${operation} failed: ${error.message}`);
+//       return of(result as any);
+//     };
+//   }
+
+
   ngOnInit(): void {
     this.fetchIpText();
     this.fetchIpJson();
+    this.getAllPatients();
+    //this.getPatients();
   }
 
-  // todo add http requests
   // https://angular.io/guide/http
 
-  getAllPatients(): void{
-    throw new Error("not implemented");
+  public onSubmitButtonClicked(): void{
+    this.http.post("http://localhost:8080/api/patient/", {
+      firstName:"",
+      lastName:"" ,
+      //this.http = new HttpClient( '');
+    })
   }
 
 }

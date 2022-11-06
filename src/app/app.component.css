@@ -1,0 +1,15 @@
+table {
+  border-collapse: separate;
+  border-spacing: 50px 0;
+  margin: 45px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+}
+
+td {
+  padding: 10px 0;
+}
+
+
