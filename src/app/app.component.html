@@ -1,6 +1,5 @@
 <div>
   <table id="patientTable">
-    <!-- todo add your patients here -->
     <th>PatientenId</th>
     <th>Identifier</th>
     <th>Aktiv</th>
@@ -10,7 +9,6 @@
     <th>Telecom</th>
     <th>DeceasedBoolean</th>
     <th>Adresse</th>
-
     <tr *ngFor="let patient of patients">
       <td><span>{{patient.id}}</span></td>
       <td>
@@ -31,8 +29,6 @@
       </td>
     </tr>
   </table>
-
-
 </div>
 
 

@@ -7,7 +7,8 @@ export class Patient{
     public id: string = '',
     public resourceType: string = 'Patient',
     public identifier?: Array<Identifier>,
-    public name?: Array<HumanName>,
+    //public name?: Array<HumanName>,
+    public name?: HumanName[],
     public telecom?: Array<ContactPoint>,
     public active: boolean = false,
     public gender: string = 'unknown',
@@ -93,35 +94,12 @@ export class AppComponent implements OnInit{
   }
 
   getAllPatients(){
-    this.http.get<any>("http://localhost:8080/api/patient").subscribe((data:Patient[]) =>{
+    this.http.get<Patient[]>("http://localhost:8080/api/patient", {responseType: "json"}).subscribe((data =>{
         console.log(data);
         this.patients = data;
-        // this.names = response;
-        // this.telecoms = response;
-        // this.adresses = response;
-        // this.identifiers = response;
       }
-    );
+    ));
   }
-
-
-// todo add http requests
-
-//   public getPatients(): Observable<Patient[]> {
-//     console.log('getPatients called');
-//     return this.http
-//       .get<Patient[]>("http://localhost:8080/api/patient")
-//       .pipe(catchError(this.handleError('getPatients',[])));
-//   }
-//
-//   private handleError<T>(operation = 'operation', result?: T) {
-//     return (error: any): Observable<T> => {
-//       console.error(error);
-//       console.log(`${operation} failed: ${error.message}`);
-//       return of(result as any);
-//     };
-//   }
-
 
   ngOnInit(): void {
     this.fetchIpText();
@@ -132,13 +110,13 @@ export class AppComponent implements OnInit{
 
   // https://angular.io/guide/http
 
-  public onSubmitButtonClicked(): void{
-    this.http.post("http://localhost:8080/api/patient/", {
-      firstName:"",
-      lastName:"" ,
-      //this.http = new HttpClient( '');
-    })
-  }
+  // public onSubmitButtonClicked(): void{
+  //   this.http.post("http://localhost:8080/api/patient/", {
+  //     firstName:"",
+  //     lastName:"" ,
+  //     //this.http = new HttpClient( '');
+  //   })
+  // }
 
 }
 
