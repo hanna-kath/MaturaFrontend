@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Patient} from "./patient";
-import {HumanName} from "./humanName";
-import {Identifier} from "./identifier";
-import {ContactPoint} from "./contactPoint";
+import {Patient} from "./Patient";
+import {HumanName} from "./HumanName";
+import {Identifier} from "./Identifier";
+import {ContactPoint} from "./ContactPoint";
 import {Address} from "./address";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit{
 
   // todo store patients here
   public patients: Patient[] = [];
+  public currentPatient: Patient = {id: "", name: [], active: true, address: [], birthDate: new Date(1000, 1, 1), gender: "male", deceasedBoolean: false, identifier: [], resourceType: "", telecom:[]};
   public adresses: Address[] = [];
   public identifiers: Identifier[] = [];
   public names: HumanName[] = [];
@@ -57,12 +59,36 @@ export class AppComponent implements OnInit{
 
   // https://angular.io/guide/http
 
-  // public onSubmitButtonClicked(): void{
-  //   this.http.post("http://localhost:8080/api/patient/", {
-  //     firstName:"",
-  //     lastName:"" ,
-  //     //this.http = new HttpClient( '');
-  //   })
+  public onSubmitButtonClicked(): void{
+    this.http.post("http://localhost:8080/api/patient/", {
+      firstName:"",
+      lastName:"" ,
+      //this.http = new HttpClient( '');
+    })
+  }
+
+  // public stringifyPatient(): any {
+  //   return JSON.stringify(this.currentPatient);
+  //
+  // }
+  //
+  // public currentPatientAddName(): void {
+  //   this.currentPatient.name?.push({text: ""})
+  // }
+  //
+  // public savePatient(patient: Patient): Observable<Patient> {
+  //   //this.dataService-savePatient(this.currentPatient);
+  //   return this.http.post<Patient>("https://localhost/api/patient/", JSON.stringify(patient))
+  // }
+
+  // savePatient(patient: Patient): : Observable<any>{
+  //  return this.http.post<Patient>("https://localhost/api/patient/", JSON.stringify(patient))
+  // }
+  //
+  // savePatient(patient: Patient): void {
+  //   this.dataService.savePatient(this.currentPatient).subscribe(value: Patient) => {
+  //     console.log(value);
+  //   }
   // }
 
 }

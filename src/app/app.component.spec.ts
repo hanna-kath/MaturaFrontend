@@ -3,7 +3,8 @@ import { AppComponent } from './app.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {HttpClient} from "@angular/common/http";
 import {of} from "rxjs";
-import {Patient} from "./patient";
+import {Patient} from "./Patient";
+import * as constants from "constants";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -23,20 +24,22 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  // it('should return all patients', function () {
-  //   const patients: Patient[] = [];
-  //
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const http = TestBed.inject(HttpClient);
-  //   const app = fixture.componentInstance;
-  //
-  //   spyOn(http,'get').and.callThrough().and.returnValue(of(patients));
-  //
-  //   app.getAllPatients();
-  //
-  //   if(app.patients.length === 0){
-  //     throw new Error("no patients were received");
-  //   }
-  // });
+  it('should return all patients', function () {
+    const patients: Patient[] = [
+      //{name: "Max Mustermann"}
+    ];
+
+    const fixture = TestBed.createComponent(AppComponent);
+    const http = TestBed.inject(HttpClient);
+    const app = fixture.componentInstance;
+
+    spyOn(http,'get').and.callThrough().and.returnValue(of(patients));
+
+    app.getAllPatients();
+
+    if(app.patients.length === 0){
+      throw new Error("no patients were received");
+    }
+  });
 
 });

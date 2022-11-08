@@ -12,23 +12,46 @@
     <tr *ngFor="let patient of patients">
       <td><span>{{patient.id}}</span></td>
       <td>
-        <p *ngFor='let identifier of patient.identifier'>{{identifier?.value}}</p>
+        <p *ngFor='let identifier of patient.identifier'>{{identifier.value}}</p>
       </td>
       <td><span>{{patient.active}}</span></td>
       <td><span>{{patient.gender}}</span></td>
       <td>
-        <p *ngFor="let name$ of patient?.name">{{name$.text}}</p>
+        <p *ngFor="let name of patient.name">{{name.text}}</p>
       </td>
       <td><span>{{patient.birthDate}}</span></td>
       <td>
-        <p *ngFor="let telecom$ of patient?.telecom">{{telecom$.value}}</p>
+        <p *ngFor="let telecom of patient?.telecom">{{telecom.value}}</p>
       </td>
       <td><span>{{patient.deceasedBoolean}}</span></td>
       <td>
-        <p *ngFor="let address$ of patient.address">{{address$.line}}</p>
+        <p *ngFor="let address of patient.address">{{address.line}}</p>
       </td>
     </tr>
   </table>
+
+  <!--
+  <div>
+    <h1>Neuen Patienten hinzufügen</h1>
+  </div>
+    <form>
+      <div *ngFor="let name of currentPatient.name">
+        <input id="vorname" name="vorname" type="text" placeholder="Vorname" [(ngModel)]="name.text" ngForm/>
+      </div>
+      <button (click)="currentPatientAddName()"> Name hinzufügen </button>
+    </form>
+
+  <div>
+    {{stringifyPatient()}}
+  </div>
+
+  <div>
+    <button (click)="savePatient(currentPatient)">Daten absenden</button>
+  </div>
+-->
+
+
+
 </div>
 
 
