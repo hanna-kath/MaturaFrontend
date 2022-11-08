@@ -1,63 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-
-// todo implement all your server-side properties of patient
-export class Patient{
-  constructor(
-    public id: string = '',
-    public resourceType: string = 'Patient',
-    public identifier?: Array<Identifier>,
-    //public name?: Array<HumanName>,
-    public name?: HumanName[],
-    public telecom?: Array<ContactPoint>,
-    public active: boolean = false,
-    public gender: string = 'unknown',
-    public birthDate: Date = new Date(1000, 1, 1),
-    public deceasedBoolean?: boolean,
-    public address?: Array<Address>
-  ) {}
-}
-
-export class HumanName {
-  constructor(
-    public id: string = '',
-    public use: string = '',
-    public text: string = '',
-    public family: string = '',
-    public given: string = '',
-    public prefix: string = '',
-    public suffix: string = ''
-  ) {}
-}
-
-export class Identifier {
-  constructor(
-    public value: string = ''
-    //public use: string = '',
-    //public system: string = ''
-  ) {}
-}
-
-export class ContactPoint {
-  constructor(
-    public value: string = '',
-    public text: string = ''
-  ) {}
-}
-
-export class Address{
-  constructor(
-    public use: string = '',
-    public type: string = '',
-    public text: string = '',
-    public city: string = '',
-    public district: string = '',
-    public state: string = '',
-    public postalcode: string = '',
-    public country: string = '',
-    public line: Array<String>
-  ) {}
-}
+import {Patient} from "./patient";
+import {HumanName} from "./humanName";
+import {Identifier} from "./identifier";
+import {ContactPoint} from "./contactPoint";
+import {Address} from "./address";
 
 @Component({
   selector: 'app-root',
