@@ -1,0 +1,48 @@
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+
+<pre *ngIf="practitioners.length === 0">No Practitioners found!</pre>
+<div>
+    <table *ngIf="practitioners.length > 0" id="practitionerTable" style="width:100%">
+      <th>PractitionerId</th>
+      <th>Identifier</th>
+      <th>Aktiv</th>
+      <th>Geschlecht</th>
+      <th>Name</th>
+      <th>Geburtstag</th>
+      <th>Telecom</th>
+      <th>Adresse</th>
+      <tr *ngFor="let practitioner of practitioners" [routerLink]="'/practitioners/' + practitioner.id">
+        <td><span>{{practitioner.id}}</span></td>
+        <td>
+          <p *ngFor='let identifier of practitioner.identifier'>{{identifier.value}}</p>
+        </td>
+        <td><span>{{practitioner.active}}</span></td>
+        <td><span>{{practitioner.gender}}</span></td>
+        <td>
+          <p *ngFor="let name of practitioner.name">{{name.text}}</p>
+        </td>
+        <td><span>{{practitioner.birthDate}}</span></td>
+        <td>
+          <p *ngFor="let telecom of practitioner?.telecom">{{telecom.value}}</p>
+          <p *ngFor="let telecom of practitioner?.telecom">{{telecom.text}}</p>
+        </td>
+        <td>
+          <p *ngFor="let address of practitioner.address">{{address.line}}</p>
+          <p *ngFor="let address of practitioner.address">{{address.postalcode}}</p>
+          <p *ngFor="let address of practitioner.address">{{address.city}}</p>
+        </td>
+      </tr>
+    </table>
+  
+    <button (click)="createNewPractitioner()">Create new practitioner</button><br>
+    
+  </div>
+
+  <app-practitioner-form [currentPractitioner]="currentPractitioner" (practitionerCreate)="createPractitioner($event)" (practitionerUpdate)="updatePractitioner($event)" (practitionerDelete)="deletePractitioner($event)">
+
+  </app-practitioner-form>

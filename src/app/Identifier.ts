@@ -1,8 +1,5 @@
-export class Identifier {
-  constructor(
-    public value: string = '',
-    public use: string = '',
-    public system: string = ''
-  ) {
-  }
+export interface Identifier {
+    value?: string,
+    use?: "usual" | "official" | "temp" |"secondary" | "old",
+    system?: string
 }

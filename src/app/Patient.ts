@@ -4,19 +4,22 @@ import {Identifier} from "./Identifier";
 import {ContactPoint} from "./ContactPoint";
 import {Address} from "./address";
 
-export class Patient {
-  constructor(
-    public id: string = '',
-    public resourceType: string = 'Patient',
-    public identifier: Array<Identifier>,
-    //public name?: Array<HumanName>,
-    public name: HumanName[],
-    public telecom: Array<ContactPoint>,
-    public active: boolean = false,
-    public gender: string = 'unknown',
-    public birthDate: Date = new Date(1000, 1, 1),
-    public deceasedBoolean?: boolean,
-    public address?: Array<Address>
-  ) {
-  }
+export type Gender = 'unknown' | 'male' | 'female' |'other;'
+
+//hier herrscht der FHIR Standard
+export interface Patient {
+    id?: string ,         //ohne fragezeichen: man muss das angeben; ? bedeutet optional
+    resourceType?: string,
+    identifier?: Array<Identifier>,
+    name?: Array<HumanName>,
+    //public name: HumanName[],
+    telecom?: Array<ContactPoint>,
+    active?: boolean,
+    gender?: string,
+    birthDate?: Date,
+    deceasedBoolean?: boolean,
+    address?: Array<Address>
+
 }
+
+

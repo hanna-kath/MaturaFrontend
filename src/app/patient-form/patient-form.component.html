@@ -1,0 +1,46 @@
+<form *ngIf="currentPatient" [formGroup]="patientForm">
+    <!-- Text: <input formControlName="text"> <br> -->
+    Active: <input type="checkbox" formControlName="active"> <br>
+    Gender: <select formControlName="gender">
+      <option>male</option>
+      <option>female</option>
+      <option>other</option>
+      <option>unknown</option>
+    </select> <br>
+    Address: <button (click)="addNewAddress()">New Address</button>
+    <!-- addressIndex ist neue schleifenvariable -->
+    <br>
+    Birthdate: <input type="date" formControlName="birthDate"> <br>
+    <div formArrayName="telecom">
+      <!--0, weil das das Array an der Stelle 0 ist     <div formGroupName="0">    -->
+      <div *ngFor="let telecom of patientForm.controls.telecom.controls" [formGroup]="telecom">
+        <b>Telecom:</b> <br>
+        Value: <input formControlName="value">
+      </div>
+      Telecom: <button (click)="addNewTelecom()">Add Another</button>
+    </div>
+    Deceased: <input type="checkbox" formControlName="deceasedBoolean"> <br>
+    Address:
+    <div style="border: solid"
+      *ngFor="let address of patientForm.controls.address.controls;
+              let adressIndex = index"
+      [formGroup]="address">
+      Postal Code: <input formControlName="postalcode">
+      <br>
+      City: <input formControlName="city">
+      <br>
+      <!-- neuer Button -->
+      <button (click)="removeAddress(adressIndex)">Delete</button>
+    </div>
+    <br>
+    <button *ngIf="currentPatient?.id" (click) = "deletePatient()">Delete Patient</button>
+    <br>
+    <button (click)="savePatient()">Save Patient</button>
+    <!-- Wenn der Patient eine id hat,  kommt er aus der DB und kann daher gelöscht werden, sonst zeigen wir den Button gar nicht an-->
+  </form>
+
+  <pre>{{patientForm.value | json}}</pre>
+
+  <pre>
+    {{ currentPatient | json}}
+  </pre>

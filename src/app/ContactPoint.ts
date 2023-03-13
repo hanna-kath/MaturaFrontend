@@ -1,7 +1,4 @@
-export class ContactPoint {
-  constructor(
-    public value: string = '',
-    public text: string = ''
-  ) {
-  }
+export interface ContactPoint {
+    value?: string,
+    text?: string 
 }

@@ -1,0 +1,49 @@
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+
+<div>
+    <table id="patientTable" style="width:100%;">
+      <th>PatientenId</th>
+      <th>Identifier</th>
+      <th>Aktiv</th>
+      <th>Geschlecht</th>
+      <th>Name</th>
+      <th>Geburtstag</th>
+      <th>Telecom</th>
+      <th>DeceasedBoolean</th>
+      <th>Adresse</th>
+      <tr *ngFor="let patient of patients" [routerLink]="'/patients/' + patient.id">
+        <td><span>{{patient.id}}</span></td>
+        <td>
+          <p *ngFor='let identifier of patient.identifier'>{{identifier.value}}</p>
+        </td>
+        <td><span>{{patient.active}}</span></td>
+        <td><span>{{patient.gender}}</span></td>
+        <td>
+          <p *ngFor="let name of patient.name">{{name.text}}</p>
+        </td>
+        <td><span>{{patient.birthDate}}</span></td>
+        <td>
+          <p *ngFor="let telecom of patient?.telecom">{{telecom.value}}</p>
+          <p *ngFor="let telecom of patient?.telecom">{{telecom.text}}</p>
+        </td>
+        <td><span>{{patient.deceasedBoolean}}</span></td>
+        <td>
+          <p *ngFor="let address of patient.address">{{address.line}}</p>
+          <p *ngFor="let address of patient.address">{{address.postalcode}}</p>
+          <p *ngFor="let address of patient.address">{{address.city}}</p>
+        </td>
+      </tr>
+    </table>
+  
+    <button (click)="createNewPatient()">Create new Patient</button><br>
+    
+  </div>
+
+  <app-patient-form [currentPatient]="currentPatient" (patientCreate)="createPatient($event)" (patientUpdate)="updatePatient($event)" (patientDelete)="deletePatient($event)">
+
+  </app-patient-form>

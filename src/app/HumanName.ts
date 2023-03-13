@@ -1,12 +1,9 @@
-export class HumanName {
-  constructor(
-    public id: string = '',
-    public use: string = '',
-    public text: string = '',
-    public family: string = '',
-    public given: string = '',
-    public prefix: string = '',
-    public suffix: string = ''
-  ) {
-  }
+export interface HumanName {
+    id?: string,
+    use?: string,
+    text?: string,
+    family?: string,
+    given?: string,
+    prefix?: string,
+    suffix?: string 
 }
