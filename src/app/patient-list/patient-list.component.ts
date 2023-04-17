@@ -12,7 +12,7 @@ export class PatientListComponent implements OnInit {
 // todo store patients here
 public patients: Patient[] = [];
 currentPatient?: Patient = undefined
-
+ 
 constructor(
   private dataService: DataService,
   private router: Router,

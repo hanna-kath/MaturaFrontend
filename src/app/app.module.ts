@@ -15,7 +15,7 @@ import { PractitionerFormComponent } from './practitioner-form/practitioner-form
     PatientFormComponent,
     PatientListComponent,
     PractitionerListComponent,
-    PractitionerFormComponent,
+    PractitionerFormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,7 @@ import { PractitionerFormComponent } from './practitioner-form/practitioner-form
       {path: 'patients/:id', component: PatientListComponent},
       {path: 'practitioners', component: PractitionerListComponent},
       {path: 'practitioners/:id', component: PractitionerListComponent},
-      {path: '', redirectTo: '/patients/', pathMatch: 'full'},
+      {path: '', redirectTo:  '/patients/', pathMatch: 'full'},
     ],)
   ],
   providers: [],
