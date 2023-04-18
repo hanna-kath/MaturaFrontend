@@ -1,0 +1,30 @@
+<br>
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      border-color: paleturquoise;
+      border-width: 0.1cm;
+    }
+  </style>
+  <br>
+  <pre *ngIf="vps.length === 0">No visionprescriptions found!</pre>
+  <div>
+      <table *ngIf="vps.length > 0" id="vpTable" style="width:100%">
+        <th>Id</th>
+        <th>DateWritten</th>
+        <th>Status</th>
+        <tr *ngFor="let vp of vps" [routerLink]="'/visionprescriptions/' + vp.id">
+          <td><span>{{vp.id}}</span></td>
+          <td><span>{{vp.dateWritten}}</span></td>
+          <td><span>{{vp.status}}</span></td>
+        </tr>
+      </table>
+    <br>
+      <button (click)="createNewVisionPrescription()">Create new VisionPrescription</button><br>
+      
+    </div>
+  <br>
+    <app-visionprescription-form [currentVp]="currentVp" (vpCreate)="createVisionPrescription($event)"
+     (vpUpdate)="updateVision($event)" (vpDelete)="deleteVision($event)">
+    </app-visionprescription-form>

@@ -71,4 +71,31 @@ export class DataService {
     }
     );
   }
+
+  getVisionPrescriptions() {
+    return this.http.get<any[]>("http://localhost:8080/api/visionprescription/", { responseType: "json" });
+  }
+
+  getVisionPrescription(id: string) {
+    return this.http.get<any>('http://localhost:8080/api/visionprescription/' + id, {
+      responseType: 'json',
+    });
+  }
+
+  postVisionPrescription(data: any){
+    return this.http.post<any>('http://localhost:8080/api/visionprescription/', data, {responseType: "json"});
+  }
+
+  deleteVisionPrescription(data: any){
+    return this.http.delete('http://localhost:8080/api/visionprescription/' + data.id);
+  }
+
+  putVisionPrescription(data: any){
+    return this.http.put<any>('http://localhost:8080/api/visionprescription/' + data.id,
+    data, 
+    {
+      responseType: "json"
+    }
+    );
+  }
 }

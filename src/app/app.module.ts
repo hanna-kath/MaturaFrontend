@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { PractitionerListComponent } from './practitioner-list/practitioner-list.component';
 import { PractitionerFormComponent } from './practitioner-form/practitioner-form.component';
+import { VisionprescriptionFormComponent } from './visionprescription-form/visionprescription-form.component';
+import { VisionprescriptionListComponent } from './visionprescription-list/visionprescription-list.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { PractitionerFormComponent } from './practitioner-form/practitioner-form
     PatientFormComponent,
     PatientListComponent,
     PractitionerListComponent,
-    PractitionerFormComponent
+    PractitionerFormComponent,
+    VisionprescriptionFormComponent,
+    VisionprescriptionListComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,8 @@ import { PractitionerFormComponent } from './practitioner-form/practitioner-form
       {path: 'patients/:id', component: PatientListComponent},
       {path: 'practitioners', component: PractitionerListComponent},
       {path: 'practitioners/:id', component: PractitionerListComponent},
+      {path: 'visionprescriptions', component: VisionprescriptionListComponent},
+      {path: 'visionprescriptions/:id', component: VisionprescriptionListComponent},
       {path: '', redirectTo:  '/patients/', pathMatch: 'full'},
     ],)
   ],
