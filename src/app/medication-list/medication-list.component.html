@@ -22,7 +22,9 @@
           <td>
             <p *ngFor='let identifier of medication.identifier'>{{identifier.value}}</p>
           </td>
-          <td><span>{{medication.code}}</span></td>
+          <td>
+            <span>Text: {{medication.code !== null? medication.code.text : ""}}</span>
+          </td>
           <td><span>{{medication.status}}</span></td>
           <td><span>{{medication.marketingAuthorizationHolder}}</span></td>
           <td><span>{{medication.doseForm}}</span></td>

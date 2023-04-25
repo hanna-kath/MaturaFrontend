@@ -96,7 +96,7 @@ export class DataService {
   }
 
   putMedication(data: any){
-    return this.http.put<Medication>('http://localhost:8080/api/medication/' + data.id,
+    return this.http.put<Medication>('http://localhost:8080/api/medication/'+ data.id,
     data, 
     {
       responseType: "json"

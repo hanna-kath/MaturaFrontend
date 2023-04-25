@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
-import { Medication } from '../model/Medication';
+// import { Medication } from '../model/Medication';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { merge } from 'lodash';
 import { CodeableConcept } from '../model/CodeableConcept';
@@ -15,16 +15,16 @@ export class MedicationFormComponent implements OnChanges {
   constructor() { }
 
   @Input()
-  public currentMedication?: Medication = undefined;
+  public currentMedication?: any = undefined;
 
   @Output()
-  medicationCreate = new EventEmitter<Medication>();
+  medicationCreate = new EventEmitter<any>();
 
   @Output()
-  medicationUpdate = new EventEmitter<Medication>();
+  medicationUpdate = new EventEmitter<any>();
 
   @Output()
-  medicationDelete = new EventEmitter<Medication>();
+  medicationDelete = new EventEmitter<any>();
 
   medicationForm = new FormGroup({
     code: new FormControl(null as CodeableConcept | null),

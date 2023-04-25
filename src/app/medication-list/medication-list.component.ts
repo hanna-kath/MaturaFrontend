@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Medication } from '../model/Medication';
+// import { Medication } from '../model/Medication';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,8 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./medication-list.component.css']
 })
 export class MedicationListComponent implements OnInit {
-  public medications: Medication[] = [];
-  currentMedication?: Medication = undefined
+  public medications: any[] = [];
+  currentMedication?: any = undefined
   
   constructor(
     private dataService: DataService,
@@ -20,8 +20,8 @@ export class MedicationListComponent implements OnInit {
     activatedRoute.paramMap.subscribe(params => {
       const id = params.get('id');
       if(id) {
-        dataService.getPatient(id).subscribe(patient => {
-          this.currentMedication = patient;
+        dataService.getMedication(id).subscribe(medication => {
+          this.currentMedication = medication;
         });
       }
     });
@@ -32,7 +32,7 @@ export class MedicationListComponent implements OnInit {
     this.currentMedication = {};
   }
 
-  createMedication(medication: Medication) {
+  createMedication(medication: any) {
     this.dataService.postMedication(medication).subscribe(response => {
       console.log('post', response);
       this.fetchMedications();
@@ -40,7 +40,7 @@ export class MedicationListComponent implements OnInit {
     });
   }
 
-  updateMedication(medication: Medication) {
+  updateMedication(medication: any) {
     this.dataService.putMedication(medication).subscribe(response => {
       console.log('put', response);
       this.fetchMedications();
@@ -48,7 +48,7 @@ export class MedicationListComponent implements OnInit {
     });
   }
 
-  deleteMedication(medication: Medication) {
+  deleteMedication(medication: any) {
     this.dataService.deleteMedication(medication).subscribe(response => {
       console.log('Medication deleted', response);
       this.fetchMedications();

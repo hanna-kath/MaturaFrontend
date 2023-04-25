@@ -22,12 +22,13 @@
     <br>
     <button *ngIf="currentMedication?.id" (click) = "deleteMedication()">Delete Medication</button>
     <br>
-    <button (click)="saveMedication()">Save Medication</button>
+    <!-- <button (click)="saveMedication()">Save Medication</button> -->
+    <button (click)="saveMedication()"> {{this.currentMedication?.id ==undefined ? "Create" : "Update"}} Medication</button>
+
     <!-- Wenn der Patient eine id hat,  kommt er aus der DB und kann daher gelöscht werden, sonst zeigen wir den Button gar nicht an-->
   </form>
 
   <pre>{{ medicationForm.value | json}}</pre>
-
   <pre>
-    {{ medicationForm | json}}
+    {{ currentMedication | json}}
   </pre>

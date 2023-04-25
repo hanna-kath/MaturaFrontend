@@ -33,9 +33,13 @@
         </td>
         <td><span>{{patient.deceasedBoolean}}</span></td>
         <td>
-          <p *ngFor="let address of patient.address">{{address.line}}</p>
-          <p *ngFor="let address of patient.address">{{address.postalcode}}</p>
-          <p *ngFor="let address of patient.address">{{address.city}}</p>
+          <table *ngFor="let address of patient.address">
+            <tr>
+              <td>{{address.line}}</td>
+              <td>{{address.postalcode}}</td>
+              <td>{{address.city}}</td>
+            </tr>
+          </table>
         </td>
       </tr>
     </table>
