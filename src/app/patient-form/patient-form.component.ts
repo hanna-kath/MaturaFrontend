@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { omitByDeep } from 'lodash-omitdeep';
-import { Patient } from '../Patient';
 import { merge } from 'lodash';
+import { Patient } from '../model/Patient';
 
 
 @Component({

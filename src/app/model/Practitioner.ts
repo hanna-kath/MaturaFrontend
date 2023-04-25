@@ -1,4 +1,4 @@
-import { Address } from "./address";
+import { Address } from "./Address";
 import { ContactPoint } from "./ContactPoint";
 import { HumanName } from "./HumanName";
 import { Identifier } from "./Identifier";

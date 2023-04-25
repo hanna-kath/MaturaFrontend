@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Patient } from './Patient';
-import { Practitioner } from './Practitioner';
+import { Patient } from './model/Patient';
+import { Practitioner } from './model/Practitioner';
+import { Medication } from './model/Medication';
 
 @Injectable({
   providedIn: 'root'
@@ -18,18 +19,9 @@ export class DataService {
     return this.http.get("http://ifconfig.me/all.json", { responseType: "json" });
   }
 
+  // Patient
   getPatients() {
     return this.http.get<Patient[]>("http://localhost:8080/api/patient/", { responseType: "json" });
-  }
-
-  getPractitioners() {
-    return this.http.get<Practitioner[]>("http://localhost:8080/api/practitioner/", { responseType: "json" });
-  }
-
-  getPractitioner(id: string) {
-    return this.http.get<Practitioner>('http://localhost:8080/api/practitioner/' + id, {
-      responseType: 'json',
-    });
   }
 
   getPatient(id: string) {
@@ -55,6 +47,18 @@ export class DataService {
     );
   }
 
+
+  // Practitioner
+  getPractitioners() {
+    return this.http.get<Practitioner[]>("http://localhost:8080/api/practitioner/", { responseType: "json" });
+  }
+
+  getPractitioner(id: string) {
+    return this.http.get<Practitioner>('http://localhost:8080/api/practitioner/' + id, {
+      responseType: 'json',
+    });
+  }
+
   postPractitioner(data: Practitioner){
     return this.http.post<Practitioner>('http://localhost:8080/api/practitioner/', data, {responseType: "json"});
   }
@@ -72,26 +76,27 @@ export class DataService {
     );
   }
 
-  getVisionPrescriptions() {
-    return this.http.get<any[]>("http://localhost:8080/api/visionprescription/", { responseType: "json" });
+  // Medication
+  getMedications() {
+    return this.http.get<Medication[]>("http://localhost:8080/api/medication/", { responseType: "json" });
   }
 
-  getVisionPrescription(id: string) {
-    return this.http.get<any>('http://localhost:8080/api/visionprescription/' + id, {
+  getMedication(id: string) {
+    return this.http.get<Medication>('http://localhost:8080/api/medication/' + id, {
       responseType: 'json',
     });
   }
 
-  postVisionPrescription(data: any){
-    return this.http.post<any>('http://localhost:8080/api/visionprescription/', data, {responseType: "json"});
+  postMedication(data: Medication){
+    return this.http.post<Medication>('http://localhost:8080/api/medication/', data, {responseType: "json"});
   }
 
-  deleteVisionPrescription(data: any){
-    return this.http.delete('http://localhost:8080/api/visionprescription/' + data.id);
+  deleteMedication(data: any){
+    return this.http.delete('http://localhost:8080/api/medication/' + data.id);
   }
 
-  putVisionPrescription(data: any){
-    return this.http.put<any>('http://localhost:8080/api/visionprescription/' + data.id,
+  putMedication(data: any){
+    return this.http.put<Medication>('http://localhost:8080/api/medication/' + data.id,
     data, 
     {
       responseType: "json"

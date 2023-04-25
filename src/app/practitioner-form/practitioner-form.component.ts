@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { DataService } from '../data.service';
-import { Patient } from '../Patient';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Practitioner } from '../Practitioner';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { merge } from 'lodash';
+import { Practitioner } from '../model/Practitioner';
 
 @Component({
   selector: 'app-practitioner-form',

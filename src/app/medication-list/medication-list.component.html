@@ -1,0 +1,44 @@
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+  
+  <div>
+      <table id="medicationTable" style="width:100%;">
+        <th>MedicationId</th>
+        <th>Identifier</th>
+        <th>Code</th>
+        <th>Status</th>
+        <th>MarketingAuthorizationHolder</th>
+        <th>Doseform</th>
+        <th>TotalVolume</th>
+        <th>Ingredient</th>
+        <th>Batch</th>
+        <th>Definition</th>
+        <tr *ngFor="let medication of medications" [routerLink]="'/medications/' + medication.id">
+          <td><span>{{medication.id}}</span></td>
+          <td>
+            <p *ngFor='let identifier of medication.identifier'>{{identifier.value}}</p>
+          </td>
+          <td><span>{{medication.code}}</span></td>
+          <td><span>{{medication.status}}</span></td>
+          <td><span>{{medication.marketingAuthorizationHolder}}</span></td>
+          <td><span>{{medication.doseForm}}</span></td>
+          <td><span>{{medication.totalVolume}}</span></td>
+          <td>
+            <p *ngFor="let ingredient of medication.ingredient">{{ingredient.isActive}}</p>
+          </td>
+          <td><span>{{medication.batch}}</span></td>
+          <td><span>{{medication.definition}}</span></td>
+        </tr>
+      </table>
+    
+      <button (click)="createNewMedication()">Create new Medication</button><br>
+      
+    </div>
+  
+    <app-medication-form [currentMedication]="currentMedication" (medicationCreate)="createMedication($event)" (medicationUpdate)="updateMedication($event)" (medicationDelete)="deleteMedication($event)">
+  
+    </app-medication-form>

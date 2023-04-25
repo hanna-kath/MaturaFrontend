@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Patient} from "./Patient";
-import {HumanName} from "./HumanName";
-import {Identifier} from "./Identifier";
-import {ContactPoint} from "./ContactPoint";
-import {Address} from "./address";
+import {HumanName} from "./model/HumanName";
+import {ContactPoint} from "./model/ContactPoint";
 import {Observable} from "rxjs";
 import { DataService } from './data.service';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { merge } from 'lodash';
-import { Practitioner } from './Practitioner';
+import { Patient } from './model/Patient';
+import { Practitioner } from './model/Practitioner';
+import { Address } from './model/Address';
+import { Identifier } from './model/Identifier';
 
 @Component({
   selector: 'app-root',

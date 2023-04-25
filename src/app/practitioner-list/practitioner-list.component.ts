@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import {ActivatedRoute, convertToParamMap, Router} from "@angular/router";
-import { Practitioner } from '../Practitioner';
+import { Practitioner } from '../model/Practitioner';
  
 @Component({
   selector: 'app-practitioner-list',

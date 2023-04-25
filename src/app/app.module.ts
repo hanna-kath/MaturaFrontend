@@ -8,8 +8,8 @@ import { RouterModule } from '@angular/router';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { PractitionerListComponent } from './practitioner-list/practitioner-list.component';
 import { PractitionerFormComponent } from './practitioner-form/practitioner-form.component';
-import { VisionprescriptionFormComponent } from './visionprescription-form/visionprescription-form.component';
-import { VisionprescriptionListComponent } from './visionprescription-list/visionprescription-list.component';
+import { MedicationFormComponent } from './medication-form/medication-form.component';
+import { MedicationListComponent } from './medication-list/medication-list.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +18,8 @@ import { VisionprescriptionListComponent } from './visionprescription-list/visio
     PatientListComponent,
     PractitionerListComponent,
     PractitionerFormComponent,
-    VisionprescriptionFormComponent,
-    VisionprescriptionListComponent
+    MedicationFormComponent,
+    MedicationListComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +31,8 @@ import { VisionprescriptionListComponent } from './visionprescription-list/visio
       {path: 'patients/:id', component: PatientListComponent},
       {path: 'practitioners', component: PractitionerListComponent},
       {path: 'practitioners/:id', component: PractitionerListComponent},
-      {path: 'visionprescriptions', component: VisionprescriptionListComponent},
-      {path: 'visionprescriptions/:id', component: VisionprescriptionListComponent},
+      {path: 'medications', component: MedicationListComponent},
+      {path: 'medications/:id', component: MedicationListComponent},
       {path: '', redirectTo:  '/patients/', pathMatch: 'full'},
     ],)
   ],

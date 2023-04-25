@@ -2,9 +2,9 @@
 import {HumanName} from "./HumanName";
 import {Identifier} from "./Identifier";
 import {ContactPoint} from "./ContactPoint";
-import {Address} from "./address";
+import { Address } from "./Address";
 
-export type Gender = 'unknown' | 'male' | 'female' |'other;'
+export type Gender = 'unknown' | 'male' | 'female' |'other';
 
 //hier herrscht der FHIR Standard
 export interface Patient {
