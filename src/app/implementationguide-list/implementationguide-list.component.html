@@ -1,0 +1,48 @@
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+  
+  <div>
+      <table id="implementationguideTable" style="width:100%;">
+        <th>ImplementationGuideId</th>
+        <th>Date</th>
+        <th>dependsOn - Uri u Reason</th>
+        <th>Contact</th>
+        <th>Status</th>
+        <th>Name</th>
+        <th>Url</th>
+        <tr *ngFor="let ig of implementationguides" [routerLink]="'/implementationguides/' + ig.id">
+          <td><span>{{ig.id}}</span></td>
+          <td><span>{{ig.date}}</span></td>
+          <td>
+            <table *ngFor="let dependsOn of ig.dependsOn">
+              <tr>
+                <td>{{dependsOn.uri}}</td>
+                <td>{{dependsOn.reason}}</td>
+              </tr>
+            </table>
+          </td>        
+          <td>
+            <table *ngFor="let contact of ig.contact">
+              <tr>
+                <td>{{contact.name}}</td>
+                <!-- <td>{{contact.tele}}</td> -->
+              </tr>
+            </table>
+          </td>
+          <td><span>{{ig.status}}</span></td>
+          <td><span>{{ig.name}}</span></td>
+          <td><span>{{ig.url}}</span></td>
+        </tr>
+      </table>
+    
+      <button (click)="createNewImplementationGuide()">Create new ImplementationGuide</button><br>
+      
+    </div>
+  
+    <app-implementationguide-form [currentImplementationGuide]="currentImplementationGuide" (implementationGuideCreate)="createImplementationGuide($event)" (implementationGuideUpdate)="updateImplementationGuide($event)" (implementationGuideDelete)="deleteImplementationGuide($event)">
+  
+    </app-implementationguide-form>

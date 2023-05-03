@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Patient } from './model/Patient';
 import { Practitioner } from './model/Practitioner';
 import { Medication } from './model/Medication';
+import { ImplementationGuide } from './model/ImplementationGuide';
 
 @Injectable({
   providedIn: 'root'
@@ -97,6 +98,34 @@ export class DataService {
 
   putMedication(data: any){
     return this.http.put<Medication>('http://localhost:8080/api/medication/'+ data.id,
+    data, 
+    {
+      responseType: "json"
+    }
+    );
+  }
+
+  // ImplementationGuide
+  getImplementationGuides() {
+    return this.http.get<ImplementationGuide[]>("http://localhost:8080/api/implementationguide/", { responseType: "json" });
+  }
+
+  getImplementationGuide(id: string) {
+    return this.http.get<ImplementationGuide>('http://localhost:8080/api/implementationguide/' + id, {
+      responseType: 'json',
+    });
+  }
+
+  postImplementationGuide(data: ImplementationGuide){
+    return this.http.post<ImplementationGuide>('http://localhost:8080/api/implementationguide/', data, {responseType: "json"});
+  }
+
+  deleteImplementationGuide(data: any){
+    return this.http.delete('http://localhost:8080/api/implementationguide/' + data.id);
+  }
+
+  putImplementationGuide(data: any){
+    return this.http.put<ImplementationGuide>('http://localhost:8080/api/implementationguide/'+ data.id,
     data, 
     {
       responseType: "json"

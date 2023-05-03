@@ -10,6 +10,8 @@ import { PractitionerListComponent } from './practitioner-list/practitioner-list
 import { PractitionerFormComponent } from './practitioner-form/practitioner-form.component';
 import { MedicationFormComponent } from './medication-form/medication-form.component';
 import { MedicationListComponent } from './medication-list/medication-list.component';
+import { ImplementationguideListComponent } from './implementationguide-list/implementationguide-list.component';
+import { ImplementationguideFormComponent } from './implementationguide-form/implementationguide-form.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { MedicationListComponent } from './medication-list/medication-list.compo
     PractitionerFormComponent,
     MedicationFormComponent,
     MedicationListComponent,
+    ImplementationguideListComponent,
+    ImplementationguideFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,8 @@ import { MedicationListComponent } from './medication-list/medication-list.compo
       {path: 'practitioners/:id', component: PractitionerListComponent},
       {path: 'medications', component: MedicationListComponent},
       {path: 'medications/:id', component: MedicationListComponent},
+      {path: 'implementationguides', component: ImplementationguideListComponent},
+      {path: 'implementationguides/:id', component: ImplementationguideListComponent},
       {path: '', redirectTo:  '/patients/', pathMatch: 'full'},
     ],)
   ],

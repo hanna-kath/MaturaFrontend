@@ -1,0 +1,44 @@
+<form *ngIf="currentImplementationGuide" [formGroup]="implementationGuideForm">
+    Date: <input type="date" formControlName="date"> <br>
+    <br>
+    DependsOn:<button (click)="addNewDependsOn()">New DependsOn</button>
+    <div style="border: solid"
+      *ngFor="let dependsOn of implementationGuideForm.controls.dependsOn.controls;
+              let dependIndex = index" [formGroup]="dependsOn">
+      Uri: <input type="text" formControlName="uri">
+      <br>
+      Reason: <input type="text" formControlName="reason">
+      <br>
+      <button (click)="removeDependsOn(dependIndex)">Delete DependsOn</button>
+    </div>
+    <br>
+    Contact:<button (click)="addNewContact()">New Contact</button>
+    <div style="border: solid"
+      *ngFor="let contact of implementationGuideForm.controls.contact.controls;
+              let contactIndex = index" [formGroup]="contact">
+      Name: <input type="text" formControlName="name">
+      <br>
+      <!-- Tele: <input type="text" formControlName="tele"> -->
+      <br>
+      <button (click)="removeContact(contactIndex)">Delete Contact</button>
+    </div>
+    Status: <select formControlName="status">
+    <option>draft</option>
+    <option>active</option>
+    <option>retired</option>
+    <option>unknown</option>
+    </select> <br>
+    Name: <input type="text" formControlName="name">
+    Url: <input type="text" formControlName="url">
+    <br>
+    <button *ngIf="currentImplementationGuide?.id" (click) = "deleteImplementationGuide()">Delete ImplementationGuide</button>
+    <br>
+    <button (click)="saveImplementationGuide()">Save ImplementationGuide</button>
+    <!-- Wenn der Patient eine id hat,  kommt er aus der DB und kann daher gelöscht werden, sonst zeigen wir den Button gar nicht an-->
+  </form>
+
+  <pre>{{implementationGuideForm.value | json}}</pre>
+
+  <pre>
+    {{ currentImplementationGuide | json}}
+  </pre>
